@@ -1,0 +1,41 @@
+{
+  "title": "getPermissions",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "integer"
+      },
+      "permission": {
+        "type": "string",
+        "enum": [
+          "moder",
+          "user",
+          "admin"
+        ]
+      }
+    },
+    "required": [
+      "id",
+      "permission"
+    ]
+  },
+  "description": "Таблица ролей",
+  "x-examples": {
+    "Пример": [
+      {
+        "id": 1,
+        "permission": "admin"
+      },
+      {
+        "id": 2,
+        "permission": "moder"
+      },
+      {
+        "id": 3,
+        "permission": "user"
+      }
+    ]
+  }
+}

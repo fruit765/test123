@@ -1,25 +1,20 @@
 import React from 'react';
 import LoginContainer from './Login/LoginContainer';
-import { Route } from 'react-router-dom';
-import PointsContainer from './pointsPage/Points/PointsContainer';
-import AddEditFormContainer from './pointsPage/AddEditForm/AddEditFormContainer';
-import PaginationContainer from './pointsPage/Pagination/PaginationContainer';
-import SearchPointsContainer from './pointsPage/SearchPoints/SearchPointsContainer';
-import PointsPage from './pointsPage/PointsPage';
+import { Route, Redirect, Switch } from 'react-router-dom';
 import HeaderContainer from './Header/HeaderContainer';
+import AdminPageContainer from './AdminPage/AdminPageContainer';
+import PointsPageContainer from './PointsPage/PointsPageContainer';
 
 function App() {
     return (
         <div className="container">
             <HeaderContainer />
-            <Route path="/login" render={() => <LoginContainer />} />
-            <Route path="/points" render={
-                () => {
-                    return (
-                        <PointsPage />
-                    );
-                }
-            } />
+            <Switch>
+                <Redirect exact from="/" to="/login" />
+                <Route path="/login" render={() => <LoginContainer />} />
+                <Route path="/points" render={() => <PointsPageContainer />} />
+                <Route path="/admin" render={() => <AdminPageContainer />} />
+            </Switch>
         </div>
     );
 }
